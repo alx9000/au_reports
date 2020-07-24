@@ -115,9 +115,10 @@ class Section(Garage):
 
         return {
           book:[sum(
-            1 for day in dayitems[book]
-            if (int(day.text)-(i+1)) % 7 == 0)
-          for i in range(7)] for book in self.books}
+                    1 for day in dayitems[book]
+                    if (int(day.text)-(i+1)) % 7 == 0)
+                for i in range(7)] 
+          for book in self.books}
 
     def requirement(self):
         dayitems = [
