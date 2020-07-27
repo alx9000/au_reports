@@ -105,13 +105,14 @@ class Section(Garage):
         self.desc = self.root.find(".//sectionDescription").text.strip()
         self.name = self.root.find(".//sectionName").text.strip()
         self.Id = self.root.find(".//primaryGroup").text.strip()
-        self.books = list(set([book.text.strip()[:-9] 
+        self._books = list(set([book.text.strip() 
             for book in self.root.findall(".//shiftBook")]))
+        self.books = [book[:-9] for book in self._books]
         
     def by_book(self):
         dayitems = {
-          book:self.root.findall('.//dayItem[shiftBook="%s"]/dayItemId' % book)
-          for book in self.books}
+          book[:-9]:self.root.findall('.//dayItem[shiftBook="%s"]/dayItemId' % book)
+          for book in self._books}
 
         return {
           book:[sum(
