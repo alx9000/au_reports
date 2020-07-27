@@ -105,6 +105,12 @@ class Section(Garage):
         self.desc = self.root.find(".//sectionDescription").text.strip()
         self.name = self.root.find(".//sectionName").text.strip()
         self.Id = self.root.find(".//primaryGroup").text.strip()
+        self._spares = self.root.findall(".//dayItem[dayItemType='4']/dayItemId")
+        self.spares = [
+            sum(
+                1 for day in self._spares
+                    if (int(day.text)-(i+1)) % 7 == 0)
+                for i in range(7)] 
         self._books = list(set([book.text.strip() 
             for book in self.root.findall(".//shiftBook")]))
         self.books = [book[:-9] for book in self._books]
@@ -131,3 +137,4 @@ class Section(Garage):
             1 for day in dayitems
             if (int(day)-(i+1)) % 7 == 0)
           for i in range(7)]
+
