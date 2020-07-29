@@ -55,6 +55,23 @@ class Garage:
         'SILVERTOWN':['SI','20','E'],
         'STOCKWELL':['SW','08','S']}
 
+    CODES = {
+        'A':['SUTTON','06','S'],
+        'AF':['PUTNEY','07','S'],
+        'AL':['MERTON','05','S'],
+        'BX':['BEXLEYHEATH','01','S'],
+        'CROYDON':['C','16','S'],
+        'MB':['ORPINGTON','15','S'],
+        'MG':['MORDENWHARF','18','S'],
+        'NP':['NORTHUMBERLANDPARK','14','E'],
+        'NX':['NEWCROSS','02','S'],
+        'PL':['WATERSIDEWAY','10','S'],
+        'PM':['PECKHAM','03','S'],
+        'Q':['CAMBERWELL','04','S'],
+        'RA':['WATERLOO','09','S'],
+        'RR':['RIVERROAD','30','E'],
+        'SI':['SILVERTOWN','20','E'],
+        'SW':['STOCKWELL','08','S']}
 
 class Rota(Garage):
     def __init__(self,version,date):

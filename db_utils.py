@@ -1,24 +1,24 @@
 #!/home/common/scripts/python/bin/python3
 
-import .au_parse
+import au_parse
 import os
 import os.path
 import sqlite3 as sq
 from fnmatch import fnmatch
 
-def create_ds_db(sched)
+def create_ds_db(sched):
     """Return connection to in-memory database for DS."""
 
-    db = sq.connect(:memory:)
+    db = sq.connect(':memory:')
     c = db.cursor()
-    db.executescript("""
+    c.executescript("""
         create table duties(
             d_no,
             depot,
             son,
             soff,
-            on,
-            off,
+            onP,
+            offP,
             spread,
             tod
         );
@@ -29,16 +29,18 @@ def create_ds_db(sched)
             depot,
             start,
             end,
-            on,
-            off
+            onP,
+            offP
         );
         """)
+
+    return db
             
 
-def create_ts_db(sched)
+def create_ts_db(sched):
     """Return connection to in-mem db for TS."""
 
-    db = sq.connect(:memory:)
+    db = sq.connect(':memory:')
     c = db.cursor()
     db.executescript("""
         create table runs(

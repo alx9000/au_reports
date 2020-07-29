@@ -1,7 +1,7 @@
 #!/home/common/scripts/python/bin/python3
 
 import sqlite3
-import .db_utils as db
+import db_utils as db
 
 
 class scheduleDB
